@@ -1,7 +1,61 @@
+import { useParams } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { fetchManufacturer } from "../../lib/services/api";
+import type { IManufacturer } from "../../lib/types";
+import PageHeader from '../molecules/PageHeader';
+import { Carousel } from '../molecules/Carousel';
+import ManufactureDetailsTab from '../molecules/ManufactureDetailsTab';
+import ManufacturesSpecs from '../molecules/ManufacturesSpecs';
+
 const ManufacturerDetailContainer = () => {
-  return (
-    <div>Manufacturer Detail</div>
-  )
+    const { id } = useParams();
+    const [manufacturer, setManufacturer] = useState<IManufacturer | null>(null);
+    const [loading, setLoading] = useState<boolean>(true);
+
+    useEffect(() => {
+        const loadData = async () => {
+            try {
+                const data = await fetchManufacturer(Number(id));
+                setManufacturer(data);
+                console.log("Yüklenen Üretici Verisi:", data);
+            } catch (error) {
+                console.error("Veri yüklenirken hata oluştu:", error);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        loadData();
+    }, [id]);
+
+    if (loading) {
+        return (
+            <div style={{ display: 'flex', justifyContent: 'center', padding: '50px' }}>
+                <h2>Yükleniyor...</h2>
+            </div>
+        );
+    }
+
+    return (
+        <>
+            <PageHeader title={manufacturer?.brand || "Üretici Detayı"} action="Talep Oluştur" />
+            <section className='detail-layout'>
+                <section className='detail-content'>
+                    <Carousel images={manufacturer?.images || []} />
+                    <ManufactureDetailsTab description={manufacturer?.description} certificates={manufacturer?.certificates} />
+                </section>
+                <section className='detail-info'>
+                    <ManufacturesSpecs 
+                        category={manufacturer?.category}
+                        city={manufacturer?.city}
+                        rating={manufacturer?.rating}
+                        minimumOrderQuantity={manufacturer?.minimumOrderQuantity}
+                        shippingInformation={manufacturer?.shippingInformation}
+                    />
+                </section>
+            </section>
+        </>
+    )
 }
 
 export default ManufacturerDetailContainer

@@ -29,6 +29,7 @@ export const fetchManufacturer = async (id: number): Promise<IManufacturer> => {
     ...data,
     city: "İstanbul",
     shippingInformation: data.shippingInformation || "2-4 İş Günü",
-    minimumOrderQuantity: data.minimumOrderQuantity || 1
+    minimumOrderQuantity: data.minimumOrderQuantity || 1,
+    certificates: ["ISO 9001", "GMP Certified", "CE Standard"]
   };
 };

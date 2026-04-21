@@ -10,4 +10,5 @@ export interface IManufacturer {
   images: string[];
   thumbnail: string;
   tags: string[];
+  certificates?: string[];
 }
