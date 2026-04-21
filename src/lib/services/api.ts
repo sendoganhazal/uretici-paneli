@@ -20,3 +20,15 @@ export const fetchManufacturers = async (): Promise<IManufacturer[]> => {
     };
   });
 };
+
+export const fetchManufacturer = async (id: number): Promise<IManufacturer> => {
+  const res = await fetch(`https://dummyjson.com/products/${id}`);
+  const data = await res.json();
+
+  return {
+    ...data,
+    city: "İstanbul",
+    shippingInformation: data.shippingInformation || "2-4 İş Günü",
+    minimumOrderQuantity: data.minimumOrderQuantity || 1
+  };
+};
