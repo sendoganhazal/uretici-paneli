@@ -1,15 +1,16 @@
 import { Link } from "react-router-dom";
 
 type PageHeaderProps = {
-    title?: string;
-    action?: React.ReactNode;
+  title?: string;
+  action?: React.ReactNode;
+  actionLabel?: string;
 };
-const PageHeader = ({ title, action }: PageHeaderProps) => {
+const PageHeader = ({ ...props }: PageHeaderProps) => {
   return (
-   <section className="page-header">
-     <h1>{title}</h1>
-     {action && <Link className={"btn btn-solid btn-primary btn-action"} to={"/talep-olustur"}>{action}</Link>}
-   </section>
+    <section className="page-header">
+      <h1>{props.title}</h1>
+      {props.action && <Link className={"btn btn-solid btn-primary btn-action"} to={"/" + props.action}>{props.actionLabel}</Link>}
+    </section>
   )
 }
 

@@ -38,8 +38,8 @@ const ManufacturerDetailContainer = () => {
 
     return (
         <>
-            <PageHeader title={manufacturer?.brand || "Üretici Detayı"} action="Talep Oluştur" />
-            <section className='detail-layout'>
+            <PageHeader title={manufacturer?.brand || "Üretici Detayı"} action="request" actionLabel="Talep Oluştur" />
+            <section className='layout detail-layout'>
                 <section className='detail-content'>
                     <Carousel images={manufacturer?.images || []} />
                     <ManufactureDetailsTab description={manufacturer?.description} certificates={manufacturer?.certificates} />

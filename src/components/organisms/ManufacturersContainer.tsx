@@ -34,7 +34,7 @@ const ManufacturersContainer = () => {
     return (
         <>
             <PageHeader title="Üreticiler" />
-            <section className="manufacturer-grid">
+            <section className="layout manufacturer-grid">
                 {manufacturers.map((item) => (
                     <div className="grid-item" key={item.id}>
                         <ManufacturerCard manufacturer={item} />
