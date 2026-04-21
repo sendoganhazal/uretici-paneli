@@ -297,6 +297,19 @@ h6 {
 }
 
 /*Forms*/
+.successful {
+  padding: 20px;
+  text-align: center;
+  background-color: var(--white);
+  color: var(--mui-success);
+  border-radius: 8px;
+}
+.form-error {
+  color: var(--mui-error);
+  font-size: 0.75rem;
+  margin-top:4px;
+  display: block
+}
 
 .form-label {
   display: block;
@@ -304,6 +317,7 @@ h6 {
   font-size: 0.875rem;
   font-weight: 500;
   color: var(--text-gray);
+  display: block;
 }
 
 .form-control {
