@@ -1,73 +1,78 @@
-# React + TypeScript + Vite
+# 🏭 Üretici & Tedarikçi Platformu - Mini Task
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Bu proje, bir üretici/tedarikçi platformunda alıcıların üretici listelerini inceleyebildiği, detaylı profillere bakabildiği ve hızlıca talep oluşturabildiği bir frontend arayüz simülasyonudur.
 
-Currently, two official plugins are available:
+## 🎯 Proje Amacı
+Adayın; React/TypeScript yetkinliğini, bileşen mimarisi (Atomic Design) yaklaşımını, responsive (uyumlu) tasarım kalitesini ve API veri yönetim becerisini ölçmek amacıyla geliştirilmiştir.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🚀 Başlangıç
 
-## React Compiler
+Projeyi yerel ortamınızda ayağa kaldırmak için aşağıdaki adımları izleyebilirsiniz:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### 1. Gereksinimler
+- **Node.js** (v18+)
+- **npm** veya **yarn**
 
-## Expanding the ESLint configuration
+### 2. Kurulum
+```bash
+# Depoyu klonlayın
+git clone <repo-url>
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+# Proje dizinine gidin
+cd frontend-assessment-task
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+# Paketleri yükleyin
+npm install
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### 3. Çalıştırma
 ```
+npm run dev
+
+```
+
+## 🛠 Teknik Stack & Yaklaşımlar
+**Vite + React + TypeScript:**  Modern ve hızlı geliştirme deneyimi ile tip güvenliği.
+
+**Atomic Design Metodolojisi:**  Proje; Atoms, Molecules, Organisms ve Templates olarak katmanlandırılmıştır. Bu sayede kodun tekrar kullanılabilirliği ve sürdürülebilirliği maksimize edilmiştir.
+
+**CSS Grid & Flexbox:**  Herhangi bir UI kütüphanesine (Bootstrap/MUI) bağımlı kalmadan, saf CSS ile responsive panel yapısı kurulmuştur.
+
+**Data Mapping:**  DummyJSON API'sinden gelen ürün verileri, bir "Üretici" modeline maplenerek; şehir, termin süresi ve sertifika gibi alanlarla zenginleştirilmiştir.
+
+**Custom Hooks:**  API çağrıları ve veri yönetimi için temiz bir soyutlama yapılmıştır.
+
+## 📂 Klasör Yapısı
+```
+src/
+├── components/
+│   ├── atoms/       # Button, Badge, Input, Typography
+│   ├── molecules/   # FormField, InfoTabs, ProductGallery
+│   ├── organisms/   # ManufacturerCard, RequestForm
+│   └── templates/   # PageLayout (Main Container)
+├── services/        # api.ts (Data Fetching & Transformation)
+├── types/           # TypeScript Interfaces & Types
+├── pages/           # Manufacturers (List) & ManufacturerDetail
+├── App.tsx          # Routing Configuration
+└── index.css        # Global Styles (MUI Colors & Typography)
+```
+
+
+## ✨ Öne Çıkan Özellikler
+**Responsive Design:** Tüm ekran boyutları (Mobil, Tablet, Desktop) için optimize edilmiş CSS Grid yapısı.
+
+**Üretici Detay Sayfası:**
+
+İnteraktif galeri/carousel alanı.
+
+**Tab Yapısı:** Üretici açıklaması ve sertifikalar arasında hızlı geçiş.
+
+**Talep Formu:** - Material UI ve Bootstrap stillerinden ilham alınarak oluşturulmuş modern form elemanları.
+
+Loading state, başarılı/hatalı gönderim geri bildirimleri ve temel validation.
+
+## Teslim Notları
+**Süre:** Proje belirlenen süre içerisinde tamamlanmıştır.
+
+**Görsel Özen:** Tipografi için Google Fonts (Nunito) kullanılmış, renk paleti Material UI standartlarına göre seçilmiştir.
