@@ -3,9 +3,14 @@ import TabContent from "../atoms/TabContent";
 type DetailTabProps = {
     description?: string;
     certificates?: string[];
+     category?: string;
+    city?: string;
+    rating?: number;
+    minimumOrderQuantity?: number;
+    shippingInformation?: string;
 }
-const ManufactureDetailsTab = ({ description, certificates }: DetailTabProps) => {
-    const [activeTab, setActiveTab] = useState<"desc" | "cert">("desc");
+const ManufactureDetailsTab = ({ description, certificates,city,category,rating,minimumOrderQuantity,shippingInformation }: DetailTabProps) => {
+    const [activeTab, setActiveTab] = useState<"desc" | "cert" | "specs">("desc");
 
     return (
         <div className="tab-container">
@@ -22,6 +27,12 @@ const ManufactureDetailsTab = ({ description, certificates }: DetailTabProps) =>
                 >
                     Sertifikalar
                 </button>
+                <button
+                    className={`btn btn-solid ${activeTab === "specs" ? "active" : ""}`}
+                    onClick={() => setActiveTab("specs")}
+                >
+                    Özellikler
+                </button>
             </div>
 
             <div className="tab-content">
@@ -30,7 +41,7 @@ const ManufactureDetailsTab = ({ description, certificates }: DetailTabProps) =>
                         <h4>Hakkımızda</h4>
                         <p>{description}</p>
                     </TabContent>
-                ) : (
+                ) : activeTab === "cert" ? (
                     <TabContent>
                         <h4>Sahip Olduğumuz Belgeler</h4>
                         <ul>
@@ -42,6 +53,15 @@ const ManufactureDetailsTab = ({ description, certificates }: DetailTabProps) =>
                                 <li>Sertifika bilgisi bulunmamaktadır.</li>
                             )}
                         </ul>
+                    </TabContent>
+                ) : (
+                    <TabContent>
+                        <h4>Ürün Özellikleri</h4>
+                         <p><strong>Şehir:</strong> {city}</p>
+            <p><strong>Kategori:</strong> {category}</p>
+            <p><strong>Min. Sipariş:</strong> {minimumOrderQuantity} Adet</p>
+            <p><strong>Termin:</strong> {shippingInformation}</p>
+            <div className="rating">⭐ {rating}</div>
                     </TabContent>
                 )}
             </div>

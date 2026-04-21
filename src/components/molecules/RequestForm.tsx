@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button } from "../atoms/Button";
 
-export const RequestForm = () => {
+const RequestForm = () => {
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -46,3 +46,5 @@ export const RequestForm = () => {
     </form>
   );
 };
+
+export default  RequestForm;

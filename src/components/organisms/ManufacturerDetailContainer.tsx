@@ -5,7 +5,7 @@ import type { IManufacturer } from "../../lib/types";
 import PageHeader from '../molecules/PageHeader';
 import { Carousel } from '../molecules/Carousel';
 import ManufactureDetailsTab from '../molecules/ManufactureDetailsTab';
-import ManufacturesSpecs from '../molecules/ManufacturesSpecs';
+import  RequestForm from '../molecules/RequestForm'
 
 const ManufacturerDetailContainer = () => {
     const { id } = useParams();
@@ -38,20 +38,18 @@ const ManufacturerDetailContainer = () => {
 
     return (
         <>
-            <PageHeader title={manufacturer?.brand || "Üretici Detayı"} action="request" actionLabel="Talep Oluştur" />
+            <PageHeader title={manufacturer?.brand || "Üretici Detayı"} />
             <section className='layout detail-layout'>
                 <section className='detail-content'>
                     <Carousel images={manufacturer?.images || []} />
-                    <ManufactureDetailsTab description={manufacturer?.description} certificates={manufacturer?.certificates} />
-                </section>
-                <section className='detail-info'>
-                    <ManufacturesSpecs 
-                        category={manufacturer?.category}
+                    <ManufactureDetailsTab description={manufacturer?.description} certificates={manufacturer?.certificates}  category={manufacturer?.category}
                         city={manufacturer?.city}
                         rating={manufacturer?.rating}
                         minimumOrderQuantity={manufacturer?.minimumOrderQuantity}
-                        shippingInformation={manufacturer?.shippingInformation}
-                    />
+                        shippingInformation={manufacturer?.shippingInformation}/>
+                </section>
+                <section className='detail-info'>
+          <RequestForm />
                 </section>
             </section>
         </>
