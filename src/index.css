@@ -128,10 +128,20 @@ h6 {
   grid-template-columns: repeat(12, 1fr);
   padding: 48px 24px;
 }
-.page-header h1 {
+.page-header .info {
+  display: flex;
+  align-items: center;
+  gap: 20px;
   grid-column: span 8;
   color: var(--mui-primary);
 }
+.page-header .info .brand {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  display: block;
+}
+
 .page-header .btn-action {
   grid-column: span 4;
   justify-self: end;

@@ -4,11 +4,16 @@ type PageHeaderProps = {
   title?: string;
   action?: React.ReactNode;
   actionLabel?: string;
+  logo?: string;
 };
 const PageHeader = ({ ...props }: PageHeaderProps) => {
   return (
     <section className="page-header">
-      <h1>{props.title}</h1>
+      <div className="info">
+        { props.logo && <img src={props.logo} alt="Logo" className="brand" />}
+        <h1>{props.title}</h1>
+      </div>
+     
       {props.action && <Link className={"btn btn-solid btn-primary btn-action"} to={"/" + props.action}>{props.actionLabel}</Link>}
     </section>
   )

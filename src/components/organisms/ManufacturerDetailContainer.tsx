@@ -6,6 +6,8 @@ import PageHeader from '../molecules/PageHeader';
 import { Carousel } from '../molecules/Carousel';
 import ManufactureDetailsTab from '../molecules/ManufactureDetailsTab';
 import  RequestForm from '../molecules/RequestForm'
+import logo from "../../assets/hero.png";
+
 
 const ManufacturerDetailContainer = () => {
     const { id } = useParams();
@@ -38,7 +40,7 @@ const ManufacturerDetailContainer = () => {
 
     return (
         <>
-            <PageHeader title={manufacturer?.brand || "Üretici Detayı"} />
+            <PageHeader title={manufacturer?.brand || "Üretici Detayı"} logo={logo} />
             <section className='layout detail-layout'>
                 <section className='detail-content'>
                     <Carousel images={manufacturer?.images || []} />
