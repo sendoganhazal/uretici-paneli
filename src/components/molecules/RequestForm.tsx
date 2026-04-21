@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Button } from "../atoms/Button";
 import { FormField } from "../molecules/FormField";
 
 const RequestForm = () => {
+  const formRef = useRef<HTMLFormElement>(null);
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -15,16 +16,33 @@ const RequestForm = () => {
     }, 1500);
   };
 
+  const handleReset = () => {
+    setStatus('idle');
+    if (formRef.current) {
+      formRef.current.reset();
+    }
+  };
+
   if (status === 'success') {
     return (
-      <div className="successful">
-        ✅ Talebiniz üreticiye başarıyla iletildi! En kısa sürede dönüş sağlanacaktır.
+      <div className="successful-container">
+        <div className="successful-message">
+          ✅ Talebiniz üreticiye başarıyla iletildi! En kısa sürede dönüş sağlanacaktır.
+        </div>
+        <Button 
+          type="button" 
+          variant="outline" 
+          onClick={handleReset}
+          className="btn btn-solid btn-primary"
+        >
+          Yeni Talep Oluştur
+        </Button>
       </div>
     );
   }
 
   return (
-    <form onSubmit={handleSubmit} className="request-form">
+    <form onSubmit={handleSubmit} className="request-form" ref={formRef}>
       <FormField label="Ürün Adı" htmlFor="productName">
         <input 
           id="productName" 
@@ -33,6 +51,7 @@ const RequestForm = () => {
           placeholder="İhtiyacınız olan ürün..." 
         />
       </FormField>
+
       <FormField label="Kategori" htmlFor="category">
         <select id="category" required className="form-select">
           <option value="">Seçiniz...</option>
@@ -41,6 +60,7 @@ const RequestForm = () => {
           <option value="skincare">Cilt Bakımı</option>
         </select>
       </FormField>
+
       <FormField label="Miktar (Adet)" htmlFor="quantity">
         <input 
           id="quantity" 
@@ -51,6 +71,7 @@ const RequestForm = () => {
           placeholder="Örn: 500" 
         />
       </FormField>
+
       <FormField label="Açıklama / Özel Talepler" htmlFor="description">
         <textarea 
           id="description" 
@@ -61,7 +82,7 @@ const RequestForm = () => {
       </FormField>
 
       {status === 'error' && (
-        <p style={{ color: 'var(--mui-error)', marginBottom: '10px', fontSize: '0.9rem' }}>
+        <p className="error-message">
           ⚠️ Bir hata oluştu, lütfen tekrar deneyin.
         </p>
       )}
@@ -69,7 +90,7 @@ const RequestForm = () => {
       <Button 
         type="submit" 
         loading={status === 'loading'} 
-        style={{ width: '100%', marginTop: '10px' }}
+        className="btn btn-solid btn-primary"
       >
         Talebi Gönder
       </Button>
