@@ -43,20 +43,7 @@ npm run dev
 
 **Custom Hooks:**  API çağrıları ve veri yönetimi için temiz bir soyutlama yapılmıştır.
 
-## 📂 Klasör Yapısı
-```
-src/
-├── components/
-│   ├── atoms/       # Button, Badge, Input, Typography
-│   ├── molecules/   # FormField, InfoTabs, ProductGallery
-│   ├── organisms/   # ManufacturerCard, RequestForm
-│   └── templates/   # PageLayout (Main Container)
-├── services/        # api.ts (Data Fetching & Transformation)
-├── types/           # TypeScript Interfaces & Types
-├── pages/           # Manufacturers (List) & ManufacturerDetail
-├── App.tsx          # Routing Configuration
-└── index.css        # Global Styles (MUI Colors & Typography)
-```
+
 
 
 ## ✨ Öne Çıkan Özellikler
