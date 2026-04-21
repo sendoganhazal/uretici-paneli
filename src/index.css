@@ -116,7 +116,6 @@ h6 {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   gap: 24px;
-  padding: 24px;
 }
 
 .manufacturer-grid .grid-item {
@@ -126,7 +125,7 @@ h6 {
 .page-header {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  padding: 48px 24px;
+  padding: 48px 0;
 }
 .page-header .info {
   display: flex;
@@ -312,17 +311,17 @@ h6 {
   padding: 20px;
   text-align: center;
   background-color: var(--white);
-  
+
   border-radius: 8px;
 }
 
 .successful-message {
- color: var(--mui-success); /* MUI Success Dark Text */
+  color: var(--mui-success); /* MUI Success Dark Text */
   font-size: 0.875rem;
   font-weight: 500;
   line-height: 1.5;
   text-align: center;
-  margin-bottom: 20pxtale;
+  margin-bottom: 20px;
 }
 
 .error-message {
@@ -334,14 +333,20 @@ h6 {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 .form-error {
   color: var(--mui-error);
   font-size: 0.75rem;
-  margin-top:4px;
-  display: block
+  margin-top: 4px;
+  display: block;
 }
 
 .form-label {
@@ -425,6 +430,9 @@ h6 {
   .request-form .btn {
     align-self: stretch;
   }
+  .tab-buttons {
+    overflow-x: scroll;
+  }
 }
 
 @media (min-width: 768px) and (max-width: 1023.98px) {
@@ -435,21 +443,17 @@ h6 {
   .page-header {
     grid-template-columns: repeat(8, 1fr);
     gap: 20px;
-    padding: 20px;
   }
   .manufacturer-grid .grid-item,
-  .detail-content,
-  .detail-info,
-  .page-header {
-    grid-template-columns: repeat(8, 1fr);
-    gap: 20px;
-    padding: 20px;
-  }
-  .manufacturer-grid .grid-item,
-  .detail-content,
   .page-header h1,
   .page-header .btn-action {
     grid-column: span 4;
+  }
+  .detail-content {
+    grid-column: span 5;
+  }
+  .detail-info {
+    grid-column: span 3;
   }
   .request-form .btn {
     align-self: stretch;
